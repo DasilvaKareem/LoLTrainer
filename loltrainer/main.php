@@ -65,12 +65,15 @@ do {
 
 } while($MatchDetails["participantIdentities"][$i]["player"]["summonerName"] != $ally );
  $j = 0;
+ if($MatchDetails["status"]){
+
+ }else {
  do {
 
    $j++;
  }
  while($MatchDetails["participantIdentities"][$j]["player"]["summonerName"] != $rival );
-
+}
 
 $allyMatchID = $MatchDetails["participantIdentities"][$i]["participantId"];
 $rivalMatchID = $MatchDetails["participantIdentities"][$j]["participantId"];
@@ -85,101 +88,12 @@ $allyGold = $MatchDetails["participants"][$i]["stats"]["goldEarned"];
 $rivalGold = $MatchDetails["participants"][$j]["stats"]["goldEarned"];
 $allyDamage = $MatchDetails["participants"][$i]["stats"]["totalDamageDealt"];
 $rivalDamage = $MatchDetails["participants"][$j]["stats"]["totalDamageDealt"];
-$rivalVerdict = 10 ;
-$rivalVerdict + 10 ;
-$rivalVerdict + 10 ;
-var_dump($rivalVerdict);
 
 
 
-if($rivalResult> $allyResult){
 
-  $rivalVerdict + 10 ;
-}
-else if ($rivalResult == $allyResult){
-
-  $allyVerdict + 10;
-  $rivalVerdict + 10;
-
-}
-else {
-
-  $allyVerdict + 10;
-
-}
-if($rivalSpree > $allySpree){
-
-  $rivalVerdict + 10;
-
-}
-else if ($rivalSpree == $allySpree){
-
-  $allyVerdict + 10;
-  $rivalVerdict + 10;
-
-}
-else {
-
-  $allyVerdict + 10;
-
-
-}
-if($rivalScore > $allyScore){
-
-
-  $rivalVerdict + 10;
-
-}
-else if ($rivalScore == $allyScore){
-
-  $allyVerdict + 10;
-  $rivalVerdict + 10;
-
-}
-else {
-
-  $allyVerdict + 10;
-
-
-}
-if($rivalGold > $allyGold){
-
-
-  $rivalVerdict + 10;
-
-}
-else if ($rivalGold == $allyGold){
-
-  $allyVerdict + 10;
-  $rivalVerdict[0] + 10;
-
-}
-else {
-  $allyVerdict + 10;
-
-
-
-}
-if($rivalDamage > $allyDamage){
-
-
-  $rivalVerdict + 10;
-
-}
-else if ($rivalDamage == $allyDamage){
-
-  $allyVerdict + 10;
-  $rivalVerdict + 10;
-
-}
-else {
-
-  $allyVerdict + 10;
-
-
-}
 //Put Alogrthim to find Ranked Solo que
-$allyVerdict + $rivalVerdict;
+
 
 $i = 0 ;
 
@@ -348,8 +262,11 @@ $rivalWinRate = $rivalStats['playerStatSummaries'][$j]['wins'] / $rivalTotal;
 
 <?php
 
-      include ("matches0.php");
+    
+      for($i =0;$i<count($pairedMatches);$i++){
 
+        include ("matches".$i.".php");
+      }
 
 
 ?>

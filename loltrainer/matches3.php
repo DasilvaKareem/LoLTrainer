@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h1>Game 2</h1>
+          <h1>Game 4</h1>
         </div>
       </div>
       <div class="row">
