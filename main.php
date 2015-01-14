@@ -45,7 +45,7 @@ for ($i = 0; $i<10;$i++) {
       array_push($pairedMatches,$allyMatchque[$i]) ;
     }
     else {
-
+	die("Its dead");
     }
   }
 
