@@ -1,4 +1,42 @@
 
+<?php
+
+$MatchDetails = $que ->getMatch($pairedMatches[0]);
+$k = 0;
+
+
+do {
+
+  if($MatchDetails["participantIdentities"][0]["player"]["summonerName"] != $ally){
+    $k++;
+  }
+
+} while($MatchDetails["participantIdentities"][$k]["player"]["summonerName"] != $ally );
+$j = 0;
+if($MatchDetails["status"]){
+
+}else {
+  do {
+
+    $j++;
+  }
+  while($MatchDetails["participantIdentities"][$j]["player"]["summonerName"] != $rival );
+}
+
+$allyMatchID = $MatchDetails["participantIdentities"][$k]["participantId"];
+$rivalMatchID = $MatchDetails["participantIdentities"][$j]["participantId"];
+
+$allyResult =$MatchDetails["participants"][$k]["stats"]["winner"];
+$rivalResult = $MatchDetails["participants"][$j]["stats"]["winner"];
+$allySpree = $MatchDetails["participants"][$k]["stats"]["largestKillingSpree"];
+$rivalSpree = $MatchDetails["participants"][$j]["stats"]["largestKillingSpree"];
+$allyScore = array($MatchDetails["participants"][$k]["stats"]["kills"], $MatchDetails["participants"][$k]["stats"]["deaths"], $MatchDetails["participants"][$k]["stats"]["assists"]);
+$rivalScore = array($MatchDetails["participants"][$j]["stats"]["kills"], $MatchDetails["participants"][$j]["stats"]["deaths"], $MatchDetails["participants"][$j]["stats"]["assists"]);
+$allyGold = $MatchDetails["participants"][$k]["stats"]["goldEarned"];
+$rivalGold = $MatchDetails["participants"][$j]["stats"]["goldEarned"];
+$allyDamage = $MatchDetails["participants"][$k]["stats"]["totalDamageDealt"];
+$rivalDamage = $MatchDetails["participants"][$j]["stats"]["totalDamageDealt"];
+?>
 <Section id="compare" class="intro-section">
     <div class="container">
       <div class="row">

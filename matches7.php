@@ -1,5 +1,5 @@
 
-<?php $MatchDetails = $que ->getMatch($pairedMatches[4]);
+<?php $MatchDetails = $que ->getMatch($pairedMatches[7]);
 $k = 0;
 
 
@@ -41,7 +41,7 @@ $rivalDamage = $MatchDetails["participants"][$j]["stats"]["totalDamageDealt"];
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1>Game 5</h1>
+        <h1>Game 8</h1>
       </div>
     </div>
     <div class="row">

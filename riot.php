@@ -1,7 +1,7 @@
 <?php
 /*
 
-PHP Riot API 
+PHP Riot API
 Kevin Ohashi (http://kevinohashi.com)
 http://github.com/kevinohashi/php-riot-api
 
@@ -55,10 +55,10 @@ class riotapi {
 	// Cache variables
 	const CACHE_LIFETIME_MINUTES = 60;
 	const CACHE_ENABLED = TRUE;
-	
-	private $REGION;	
+
+	private $REGION;
 	//variable to retrieve last response code
-	private $responseCode; 
+	private $responseCode;
 
 
 	// Whether or not you want returned queries to be JSON or decoded JSON.
@@ -89,7 +89,7 @@ class riotapi {
 	//performs a static call. Not counted in rate limit.
 	public function getStatic($call=null, $id=null) {
 		$call = self::API_URL_STATIC_1_2 . $call . "/" . $id;
-		
+
 		return $this->request($call, false, true);
 	}
 
@@ -157,7 +157,7 @@ class riotapi {
 
 		return $this->request($call);
 	}
-	
+
 	//returns a summoner's id
 	public function getSummonerId($name) {
 			$name = strtolower($name);
@@ -169,7 +169,7 @@ class riotapi {
 				$summoner = json_decode($summoner, true);
 				return $summoner[$name]['id'];
 			}
-	}		
+	}
 
 	//Returns summoner info given summoner id.
 	public function getSummoner($id,$option=null){
@@ -218,9 +218,9 @@ class riotapi {
 	}
 
 	private function updateLimitQueue($queue, $interval, $call_limit){
-		
+
 		while(!$queue->isEmpty()){
-			
+
 			/* Three possibilities here.
 			1: There are timestamps outside the window of the interval,
 			which means that the requests associated with them were long
@@ -240,7 +240,7 @@ class riotapi {
 			if($timeSinceOldest > $interval){
 					$queue->dequeue();
 			}
-			
+
 			// Check to see whether the rate limit would be broken; if so,
 			// block for the appropriate amount of time
 			elseif($queue->count() >= $call_limit){
