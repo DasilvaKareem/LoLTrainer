@@ -1,10 +1,14 @@
 <?php
-session_start();
+
 include("riot.php");
-$ally = strtolower($_GET['summoner']);
+$ally = trim(strtolower($_GET['summoner']));
 $rival = strtolower($_GET['rival']);
 //Su//bmit Name into Riot APi then retrieves ID Then uses Id to query
+if (empty($ally) || empty($rival)){
 
+  die("Failed") ;
+
+}
 $que = new riotapi('na');
 
 //Queries Basic information about the user]
@@ -13,10 +17,10 @@ $convert = $que->getSummonerByName($ally);
 $convert2 = $que->getSummonerByName($rival);
 $allyID =$convert[$ally]['id'];
 $rivalID= $convert2[$rival]['id'];
-$rankedAlly = $que->getLeague($convert[$ally]['id']);
-$rankedRival = $que ->getLeague($convert2[$rival]['id']);
-$allyStats = $que ->getStats($convert[$ally]['id']);
-$rivalStats = $que ->getStats($convert2[$rival]['id']);
+$rankedAlly = $que->getLeague($allyID);
+$rankedRival = $que ->getLeague($rivalID);
+$allyStats = $que ->getStats($allyID);
+$rivalStats = $que ->getStats($rivalID);
 $ally = $convert[$ally]['name'];
 $rival = $convert2[$rival]['name'];
 //Get last 5 games
@@ -53,41 +57,9 @@ for ($i = 0; $i<10;$i++) {
 }
 
 
-//ALogrthim That gets all the details this is the most important piece
-$i = 0;
-$MatchDetails = $que ->getMatch($pairedMatches[0]);
+//ALogrthim That gets all the details this is the most important
+$pairedMatches = array_reverse($pairedMatches);
 
-do {
-
-  if($MatchDetails["participantIdentities"][0]["player"]["summonerName"] != $ally){
-  $i++;
-}
-
-} while($MatchDetails["participantIdentities"][$i]["player"]["summonerName"] != $ally );
- $j = 0;
- if($MatchDetails["status"]){
-
- }else {
- do {
-
-   $j++;
- }
- while($MatchDetails["participantIdentities"][$j]["player"]["summonerName"] != $rival );
-}
-
-$allyMatchID = $MatchDetails["participantIdentities"][$i]["participantId"];
-$rivalMatchID = $MatchDetails["participantIdentities"][$j]["participantId"];
-
-$allyResult =$MatchDetails["participants"][$i]["stats"]["winner"];
-$rivalResult = $MatchDetails["participants"][$j]["stats"]["winner"];
-$allySpree = $MatchDetails["participants"][$i]["stats"]["largestKillingSpree"];
-$rivalSpree = $MatchDetails["participants"][$j]["stats"]["largestKillingSpree"];
-$allyScore = array($MatchDetails["participants"][$i]["stats"]["kills"], $MatchDetails["participants"][$i]["stats"]["deaths"], $MatchDetails["participants"][$i]["stats"]["assists"]);
-$rivalScore = array($MatchDetails["participants"][$j]["stats"]["kills"], $MatchDetails["participants"][$j]["stats"]["deaths"], $MatchDetails["participants"][$j]["stats"]["assists"]);
-$allyGold = $MatchDetails["participants"][$i]["stats"]["goldEarned"];
-$rivalGold = $MatchDetails["participants"][$j]["stats"]["goldEarned"];
-$allyDamage = $MatchDetails["participants"][$i]["stats"]["totalDamageDealt"];
-$rivalDamage = $MatchDetails["participants"][$j]["stats"]["totalDamageDealt"];
 
 
 
@@ -221,7 +193,7 @@ $rivalWinRate = $rivalStats['playerStatSummaries'][$j]['wins'] / $rivalTotal;
 <section class= "intro-section">
   <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <h1><?php echo $ally ?></h1>
           <h2><?php echo $rankedAlly[$allyID][0]["tier"]." ".$rankedAlly[$allyID][0]["entries"][$k]['division']." ".$rankedAlly[$allyID][0]["name"];?></h2>
           <table class="table">
@@ -235,7 +207,7 @@ $rivalWinRate = $rivalStats['playerStatSummaries'][$j]['wins'] / $rivalTotal;
             </table>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <h1><?php echo $rival ?></h1>
           <h2><?php echo $rankedRival[$rivalID][0]["tier"]." ".$rankedRival[$rivalID][0]["entries"][$a]['division']." ".$rankedRival[$rivalID][0]["name"];?></h2>
           <table class="table"
@@ -261,13 +233,18 @@ $rivalWinRate = $rivalStats['playerStatSummaries'][$j]['wins'] / $rivalTotal;
 
 
 <?php
+  if($pairedMatches){
+    for ($i = 0; $i<count($pairedMatches);$i++){
 
-    
-      for($i =0;$i<count($pairedMatches);$i++){
+      include("matches".$i.".php");
 
-        include ("matches".$i.".php");
-      }
+    }
+}
+else {
 
+  echo "No matches found";
+
+}
 
 ?>
 </body>

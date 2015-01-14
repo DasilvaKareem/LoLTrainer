@@ -12,9 +12,9 @@ $test = new riotapi('na');
 //$r = $test->getSummoner($summoner_id,'masteries');
 //$r = $test->getSummoner($summoner_id,'runes');
 //$r = $test->getSummoner($summoner_id,'name');
-//$r = $test->getLeague($summoner_id);
+$r = $test->getLeague($summoner_id);
 //$r = $test->getStats($summoner_id, 'summary');
-$r = $test->getMatchHistory($summoner_id);
+//$r = $test->getMatchHistory($summoner_id);
 
 //$r = $test->getGame($summoner_id);
 //$cool = $test ->getSummonerId($super);
