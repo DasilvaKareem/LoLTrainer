@@ -12,9 +12,20 @@ if (empty($ally) || empty($rival)){
 $que = new riotapi('na');
 
 //Queries Basic information about the user]
-
 $convert = $que->getSummonerByName($ally);
+if(is_null($convert)){
+
+  die($ally." Not a real summoner name");
+
+}
+
 $convert2 = $que->getSummonerByName($rival);
+if(is_null($convert2)){
+
+  die($rival." Not a real summoner name");
+
+}
+
 $allyID =$convert[$ally]['id'];
 $rivalID= $convert2[$rival]['id'];
 $rankedAlly = $que->getLeague($allyID);
@@ -242,7 +253,9 @@ $rivalWinRate = $rivalStats['playerStatSummaries'][$j]['wins'] / $rivalTotal;
 }
 else {
 
-  echo "No matches found";
+
+  include("matches.php");
+
 
 }
 

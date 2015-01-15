@@ -1,18 +1,18 @@
 <?php
 include('riot.php');
 //testing classes
-$summoner = 'NatrixDream';
+$summoner = 'NatrirfxDream';
 
 $summoner_id = 23071393;
 
 $matchId = 1687780771;
 $test = new riotapi('na');
-//$r = $test->getSummonerByName($summoner);
+$r = $test->getSummonerByName($summoner);
 //$r = $test->getSummoner($summoner_id);
 //$r = $test->getSummoner($summoner_id,'masteries');
 //$r = $test->getSummoner($summoner_id,'runes');
 //$r = $test->getSummoner($summoner_id,'name');
-$r = $test->getLeague($summoner_id);
+//$r = $test->getLeague($summoner_id);
 //$r = $test->getStats($summoner_id, 'summary');
 //$r = $test->getMatchHistory($summoner_id);
 

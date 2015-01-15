@@ -5,7 +5,7 @@
 <title>Error 404 Not Found</title>
 </head>
 <body><h2>HTTP ERROR 404</h2>
-<p>Problem accessing /api/lol/na/v1.3/stats/by-summoner/summary. Reason:
+<p>Problem accessing /api/lol/na/v1.4/summoner/by-name/azeedem. Reason:
 <pre>    Not Found</pre></p><br/>                                                
 <br/>                                                
 <br/>                                                
