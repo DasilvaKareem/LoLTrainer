@@ -31,7 +31,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1>LoL Rival</h1>
+        <h1>Welcome to LolRival</h1>
         <p><strong>Pick your Rival:</strong> Enter two league IGNS and compare your stats easy
           <form class="form-inline" method="get" action="main.php">
             <input class="form-control" type="text" name="summoner" placeholder="Enter Summoner Name">
