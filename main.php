@@ -60,7 +60,7 @@ for ($i = 0; $i<10;$i++) {
       array_push($pairedMatches,$allyMatchque[$i]) ;
     }
     else {
-	
+
     }
   }
 
@@ -82,11 +82,11 @@ $i = 0 ;
 
 
 
-do {
+  do {
 
-  $i++ ;
+    $i++ ;
 
-} while( $allyStats['playerStatSummaries'][$i]['playerStatSummaryType']  != 'RankedSolo5x5');
+  } while( $allyStats['playerStatSummaries'][$i]['playerStatSummaryType']  != 'RankedSolo5x5');
 
 
 $j = 0;
@@ -100,7 +100,7 @@ do {
 $k = 0 ;
 
   if($rankedAlly["status"]){
-    echo 'nah';
+
 }
 else {
 
@@ -113,7 +113,7 @@ else {
 $a = 0 ;
 if($rankedRival["status"]){
 
-  echo 'nah';
+
 
 } else {
 
@@ -200,7 +200,9 @@ $rivalWinRate = $rivalStats['playerStatSummaries'][$j]['wins'] / $rivalTotal;
   <![endif]-->
 
 </head>
+
 <body>
+
 <section class= "intro-section">
   <div class="container-fluid">
     <div class="row">
@@ -239,6 +241,7 @@ $rivalWinRate = $rivalStats['playerStatSummaries'][$j]['wins'] / $rivalTotal;
       </div>
     </div>
   </div>
+
 </section>
 
 

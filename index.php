@@ -26,20 +26,22 @@
 
 </head>
 <body>
-<section id="intro" class="intro-section">
+  <div class="theBackground">
+<section id="intro" class="index-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <h1>LoL Rival</h1>
         <p><strong>Pick your Rival:</strong> Enter two league IGNS and compare your stats easy
-          <form method="get" action="main.php">
-            <input type="text" name="summoner" placeholder="Enter Summoner Name">
-            <input type="text" name="rival" placeholder="Enter Rival Name">
-            <input type="Submit" value="Get Stats">
+          <form class="form-inline" method="get" action="main.php">
+            <input class="form-control" type="text" name="summoner" placeholder="Enter Summoner Name">
+            <input class="form-control" type="text" name="rival" placeholder="Enter Rival Name">
+            <input class="btn btn-default" type="Submit" value="Get Stats">
           </form>
       </div>
     </div>
   </div>
+</div>
 </section>
 
 
